@@ -154,12 +154,15 @@ export default function Eyes({
               const dy = cursorY - cy
 
               // Limit pupil movement within eye bounds
-              const maxMoveX = eyeRx * 0.6
-              const maxMoveY = eyeRy * 0.6
+              // O centro da pupila pode se mover até o raio do olho menos o raio da pupila.
+              // Reduzi um pouco a margem para a pupila não ir tão longe.
+              const maxMoveX = eyeRx - 20
+              const maxMoveY = eyeRy - 20
 
               // Calculate pupil position with following
-              const pupilX = cx + Math.max(-maxMoveX, Math.min(maxMoveX, dx * followStrength * 0.01))
-              const pupilY = cy + Math.max(-maxMoveY, Math.min(maxMoveY, dy * followStrength * 0.01))
+              // Aumentei a sensibilidade de 0.08 para 0.15 para um movimento mais rápido.
+              const pupilX = cx + Math.max(-maxMoveX, Math.min(maxMoveX, dx * followStrength * 0.15))
+              const pupilY = cy + Math.max(-maxMoveY, Math.min(maxMoveY, dy * followStrength * 0.15))
 
               // Draw pupil
               p.fill(0)
