@@ -1,8 +1,7 @@
 "use client"
 
 import type React from "react"
-// Import não é necessário para imagens em public
-// As imagens serão referenciadas diretamente pelo caminho
+
 import { useEffect, useMemo, useState } from "react"
 import StarIcon from "./components/StarIcon"
 import { 
