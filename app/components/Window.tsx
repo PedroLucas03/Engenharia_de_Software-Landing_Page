@@ -30,15 +30,44 @@ export default function DesktopWindow({
 
   // initial offset based on appKey
   useEffect(() => {
-    const offsets: Record<string, { x: number; y: number }> = {
-      about: { x: 80, y: 80 },
-      art: { x: 160, y: 120 },
-      philosophy: { x: 260, y: 140 },
-      resume: { x: 200, y: 160 },
+    const updatePosition = () => {
+      const isMobile = window.innerWidth < 768
+      
+      if (isMobile) {
+        // Para mobile, centralize as janelas abaixo dos olhos com pequenos offsets
+        const windowWidth = Math.min(window.innerWidth * 0.95, 1000) // largura da janela
+        const centerX = (window.innerWidth - windowWidth) / 2
+        const baseY = window.innerHeight * 0.17 // Posição base a 17% da altura da tela (mais para cima)
+        
+        // Pequenos offsets para evitar sobreposição total
+        const mobileOffsets: Record<string, { x: number; y: number }> = {
+          about: { x: centerX, y: baseY },
+          art: { x: centerX + 10, y: baseY + 20 },
+          philosophy: { x: centerX - 10, y: baseY + 40 },
+          resume: { x: centerX + 5, y: baseY + 60 },
+        }
+        
+        const offset = mobileOffsets[appKey] ?? { x: centerX, y: baseY }
+        pos.current = { x: Math.max(10, offset.x), y: Math.max(50, offset.y) }
+      } else {
+        // Para desktop, use os offsets originais
+        const offsets: Record<string, { x: number; y: number }> = {
+          about: { x: 80, y: 80 },
+          art: { x: 160, y: 120 },
+          philosophy: { x: 260, y: 140 },
+          resume: { x: 200, y: 160 },
+        }
+        const off = offsets[appKey] ?? { x: 120, y: 120 }
+        pos.current = off
+      }
+      applyTransform()
     }
-    const off = offsets[appKey] ?? { x: 120, y: 120 }
-    pos.current = off
-    applyTransform()
+
+    updatePosition()
+    
+    // Listener para redimensionamento da janela
+    window.addEventListener('resize', updatePosition)
+    return () => window.removeEventListener('resize', updatePosition)
   }, [appKey])
 
   const applyTransform = () => {
@@ -88,7 +117,7 @@ export default function DesktopWindow({
   return (
     <div
       ref={winRef}
-      className="absolute top-0 left-0 w-[min(92vw,1000px)] md:w-[800px]"
+      className="absolute top-0 left-0 w-[min(95vw,1000px)] md:w-[800px] max-w-[95vw]"
       style={{ zIndex }}
       onMouseDown={onFocus}
     >
@@ -112,7 +141,7 @@ export default function DesktopWindow({
             <X className="w-4 h-4" />
           </button>
         </header>
-        <div className="max-h-[60vh] md:max-h-[65vh] overflow-auto bg-black text-white">{children}</div>
+        <div className="max-h-[70vh] md:max-h-[65vh] overflow-auto bg-black text-white">{children}</div>
       </div>
     </div>
   )

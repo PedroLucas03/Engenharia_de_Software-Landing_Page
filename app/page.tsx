@@ -15,7 +15,9 @@ import {
   Brain,
   Calculator,
   Globe,
-  Webhook
+  Webhook,
+  Smartphone,
+  Star
 } from "lucide-react"
 import { useUIStore, type AppKey } from "@/lib/ui-store"
 import Eyes from "./components/Eyes"
@@ -31,27 +33,127 @@ type WindowSpec = {
 
 // Placeholder content builders
 function AboutContent() {
-  return (
-    <div className="p-5 md:p-6 rounded-xl border-3 border-black" style={{
-      background: 'linear-gradient(135deg, #0A1930 0%, #1B3B6F 100%)'
-    }}>
-      <h1 className="font-black leading-none text-white" style={{ fontSize: 52 }}>
-        Engenharia de Software
-        <StarIcon/>
-      </h1>
+  const subjects = [
+    {
+      icon: Bot,
+      title: "Construção de Robôs",
+      description: "Dê vida às suas ideias criando robôs incríveis com LEG e outras tecnologias de ponta! Aprenda a combinar hardware e software em projetos práticos que vão impressionar todo mundo."
+    },
+    {
+      icon: Code2,
+      title: "Programação Avançada",
+      description: "Domine as linguagens de programação mais procuradas pelo mercado e desenvolva soluções criativas para problemas reais. Do básico ao avançado, você vai se tornar um mestre da codificação!"
+    },
+    {
+      icon: Smartphone,
+      title: "Desenvolvimento Web e Mobile",
+      description: "Crie sites e aplicativos incríveis do zero! Aprenda Frontend para deixar tudo bonito, Back-end para fazer funcionar perfeitamente e Mobile para estar na mão de milhões de usuários."
+    },
+    {
+      icon: Brain,
+      title: "Inteligência Artificial",
+      description: "Entre no mundo fascinante da Ciência de Dados, Machine Learning e Deep Learning! Desenvolvasistemas inteligentes que aprendem, evoluem e tomamdecisões por conta própria."
+    },
+    {
+      icon: Gamepad,
+      title: "Jogos Digitais",
+      description: "Entre no universo dos jogos digitais e transforme suas ideias em experiências interativas incríveis! Domine engines como Unity, aprenda programação de gameplay, design de personagens, física de jogos e otimização para diferentes plataformas."
+    },
+    {
+      icon: Star,
+      title: "Projetos Práticos",
+      description: "Na Campo Real, você não fica só na teoria. Aqui você coloca a mão na massa e começa a desenvolver projetos reais desde o início do curso, construindo um portfólio impressionante que vai abrir portas no mercado de trabalho."
+    },
+  ]
 
-    
-      <p className="mt-4 text-lg text-white">Desenvolva o Futuro da Tecnologia na Campo Real.</p>
-      <div className="mt-5 flex flex-wrap gap-2">
-        {["Desenvolvimento Web", "Desenvolvimento Mobile", "Jogos Digitais", "Inteligência Artificial", "Robótica", "Rede de Computadores",].map((chip) => (
-          <span
-            key={chip}
-            className="text-sm font-semibold px-3 py-1 rounded-md border-[3px] border-black"
-            style={{ backgroundColor: "#FF2E63", color: "#000" }}
-          >
-            {chip}
-          </span>
-        ))}
+  return (
+    <div className="space-y-6">
+      <div className="p-5 md:p-6 rounded-xl border-3 border-black" style={{
+        background: 'linear-gradient(135deg, #0A1930 0%, #1B3B6F 100%)'
+      }}>
+        <h1 className="font-black leading-none text-white text-3xl md:text-5xl">
+          Engenharia de Software
+          <StarIcon/>
+        </h1>
+        <p className="mt-4 text-lg text-white">Desenvolva o Futuro da Tecnologia na Campo Real.</p>
+        <div className="mt-5 flex flex-wrap gap-2">
+          {["Desenvolvimento Web", "Desenvolvimento Mobile", "Jogos Digitais", "Inteligência Artificial", "Robótica", "Rede de Computadores",].map((chip) => (
+            <span
+              key={chip}
+              className="text-sm font-semibold px-3 py-1 rounded-md border-[3px] border-black"
+              style={{ backgroundColor: "#FF2E63", color: "#000" }}
+            >
+              {chip}
+            </span>
+          ))}
+        </div>
+      </div>
+      
+      <div className="p-5 rounded-xl border-3 border-black" style={{
+        background: 'linear-gradient(135deg, #0A1930 0%, #1B3B6F 100%)'
+      }}>
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {subjects.map((subject, i) => {
+            const Icon = subject.icon
+            return (
+              <div key={i} className="p-4 border-[3px] border-black bg-white shadow-[6px_6px_0_0_#000] flex flex-col items-center text-center">
+                <div className="w-16 h-16 rounded-full bg-[#FF2E63] grid place-items-center mb-4">
+                  <Icon className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="font-black text-xl mb-3 text-black">{subject.title}</h3>
+                <p className="text-gray-800 text-sm leading-relaxed">{subject.description}</p>
+              </div>
+            )
+          })}
+        </div>
+      </div>
+
+      <div className="p-5 rounded-xl border-3 border-black" style={{
+        background: 'linear-gradient(135deg, #0A1930 0%, #1B3B6F 100%)'
+      }}>
+        <div className="text-center text-white mb-6">
+          <h2 className="font-black text-3xl mb-4">Não perca a chance de iniciar sua jornada no mundo da tecnologia e garantir um futuro brilhante.</h2>
+          
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 mb-6">
+            <div className="p-4 border-[3px] border-black bg-white shadow-[6px_6px_0_0_#000] text-center">
+              <div className="text-4xl font-black text-[#FF2E63] mb-2">97%</div>
+              <div className="font-bold text-lg text-black mb-1">Empregabilidade</div>
+              <div className="text-sm text-gray-700">Nossos alunos conquistam vagas no mercado antes mesmo de se formar!</div>
+            </div>
+            
+            <div className="p-4 border-[3px] border-black bg-white shadow-[6px_6px_0_0_#000] text-center">
+              <div className="text-4xl font-black text-[#FF2E63] mb-2">50+</div>
+              <div className="font-bold text-lg text-black mb-1">Projetos reais</div>
+              <div className="text-sm text-gray-700">Desenvolvidos por nossos alunos todos os anos</div>
+            </div>
+            
+            <div className="p-4 border-[3px] border-black bg-white shadow-[6px_6px_0_0_#000] text-center">
+              <div className="text-4xl font-black text-[#FF2E63] mb-2">15+</div>
+              <div className="font-bold text-lg text-black mb-1">Empresas parceiras</div>
+              <div className="text-sm text-gray-700">Oferecendo estágios e oportunidades exclusivas</div>
+            </div>
+          </div>
+
+          <div className="mb-6">
+            <div className="flex flex-wrap gap-3 justify-center mb-4">
+              {[
+                "Processo seletivo simplificado",
+                "Bolsas de estudo disponíveis", 
+                "Laboratórios modernos",
+                "Professores experientes",
+                "Conexão direta com o mercado de trabalho"
+              ].map((benefit, i) => (
+                <span key={i} className="text-sm font-semibold px-3 py-2 rounded-md border-[3px] border-black bg-white text-black">
+                  ✓ {benefit}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          <p className="text-lg">
+            Siga-nos no Instagram <a href="https://www.instagram.com/engsoft.camporeal/" target="_blank" rel="noopener noreferrer" className="font-bold text-[#FF2E63] hover:underline transition-all">@engsoft.camporeal</a> e confira os projetos incríveis que nossos alunos estão desenvolvendo!
+          </p>
+        </div>
       </div>
     </div>
   )
@@ -123,13 +225,23 @@ function PhilosophyContent() {
       course: "Banco de Dados",
       image: "/images/Giovano.jpg"
     },
+    {
+      name: "Professora Fabiana Camargo",
+      course: "Programação e Sistemas Computacionais",
+      image: "/Fabiana.jpg"
+    },
+    {
+      name: "Professor Moacir Guedes Oliveira",
+      course: "Programação e Sistemas Computacionais",
+      image: "/Moacir.png"
+    },
 
   ]
   return (
     <div className="p-5 rounded-xl border-3 border-black" style={{
       background: 'linear-gradient(135deg, #0A1930 0%, #1B3B6F 100%)'
     }}>
-      <div className="grid gap-4 md:grid-cols-3">
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {professors.map((prof, i) => (
           <div key={i} className="p-4 border-[3px] border-black bg-white shadow-[6px_6px_0_0_#000] flex flex-col items-center text-center">
             <div className="w-32 h-32 rounded-full overflow-hidden border-2 border-black mb-4 mt-2">
@@ -159,70 +271,63 @@ function PhilosophyContent() {
 }
 
 function ResumeContent() {
-  const subjects = [
+  const semesters = [
     {
-      icon: Code2,
-      title: "Desenvolvimento Web/Mobile",
-      description: "Criação de aplicações modernas para web e dispositivos móveis."
-    },
-    {
-      icon: Gamepad,
-      title: "Jogos Digitais",
-      description: "Desenvolvimento de jogos, engines e mecânicas de gameplay."
+      period: "1º Período",
+      subjects: ["Criatividade e Inovação", "Fundamentos para Engenharia de Software", "Lógica Computacional", "Programação e Sistemas Computacionais I"]
     },
     {
-      icon: Brain,
-      title: "Inteligência Artificial",
-      description: "Machine Learning, Redes Neurais e Sistemas Inteligentes."
+      period: "2º Período", 
+      subjects: ["Interação Humano Computador", "Programação e Sistemas Computacionais II", "Robótica", "Organização e Arquitetura de Computadores"]
     },
     {
-      icon: Bot,
-      title: "Robótica",
-      description: "Automação, sistemas robóticos e integração de hardware."
+      period: "3º Período",
+      subjects: ["Banco de Dados I", "Desenvolvimento Front-End", "Programação Orientada a Objetos", "Redes de Computadores"]
     },
     {
-      icon: Network,
-      title: "Redes de Computadores",
-      description: "Infraestrutura de redes, protocolos e segurança."
+      period: "4º Período",
+      subjects: ["Análise e Projeto de Sistemas", "Banco de Dados II", "Ciência de Dados", "Desenvolvimento Back-End"]
     },
     {
-      icon: Database,
-      title: "Banco de Dados",
-      description: "Modelagem, gestão e otimização de bancos de dados."
-    },
-        {
-      icon: Calculator,
-      title: "Fundamentos Matemáticos",
-      description: "Base matemática essencial para computação e análise de algoritmos."
+      period: "5º Período",
+      subjects: ["Desenvolvimento Web Full-Stack", "Inteligência Artificial", "Jogos Digitais", "Propriedade Intelectual e Legislação Tecnológica"]
     },
     {
-      icon: Webhook,
-      title: "APIs e Microserviços",
-      description: "Arquitetura de sistemas distribuídos e integração de serviços."
+      period: "6º Período",
+      subjects: ["Desenvolvimento Mobile", "Machine Learning e Deep Learning", "Qualidade de Software", "Programa de Extensão Institucional"]
     },
-        { 
-      icon: Cloud,
-      title: "Computação em Nuvem",
-      description: "Infraestrutura em nuvem, serviços distribuídos e deployments escaláveis."
+    {
+      period: "7º Período",
+      subjects: ["Extensão I", "Trabalho de Conclusão de Curso I"]
     },
+    {
+      period: "8º Período",
+      subjects: ["Estágio Supervisionado", "Trabalho de Conclusão de Curso II", "Extensão II"]
+    }
   ]
+
   return (
     <div className="p-5 rounded-xl border-3 border-black" style={{
       background: 'linear-gradient(135deg, #0A1930 0%, #1B3B6F 100%)'
     }}>
-      <div className="grid gap-4 md:grid-cols-3">
-        {subjects.map((subject, i) => {
-          const Icon = subject.icon
-          return (
-            <div key={i} className="p-4 border-[3px] border-black bg-white shadow-[6px_6px_0_0_#000] flex flex-col items-center text-center">
-              <div className="w-16 h-16 rounded-full bg-[#FF2E63] grid place-items-center mb-4">
-                <Icon className="w-8 h-8 text-white" />
-              </div>
-              <h3 className="font-black text-xl mb-3 text-black">{subject.title}</h3>
-              <p className="text-gray-800 text-sm leading-relaxed">{subject.description}</p>
-            </div>
-          )
-        })}
+      <div className="text-center text-white mb-6">
+        <h2 className="font-black text-3xl mb-2">Matriz Curricular</h2>
+        <p className="text-lg">Conheça as principais disciplinas do curso</p>
+      </div>
+      
+      <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+        {semesters.map((semester, i) => (
+          <div key={i} className="p-4 border-[3px] border-black bg-white shadow-[6px_6px_0_0_#000]">
+            <h3 className="font-black text-lg mb-3 text-[#FF2E63] text-center">{semester.period}</h3>
+            <ul className="space-y-2">
+              {semester.subjects.map((subject, j) => (
+                <li key={j} className="text-sm text-gray-800 font-medium leading-tight">
+                  • {subject}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
       </div>
     </div>
   )
