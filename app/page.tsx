@@ -274,27 +274,27 @@ function ResumeContent() {
   const semesters = [
     {
       period: "1º Período",
-      subjects: ["Criatividade e Inovação", "Fundamentos para Engenharia de Software", "Lógica Computacional", "Programação e Sistemas Computacionais I"]
+      subjects: ["Criatividade e Inovação", "Estatística", "Fundamentos para Engenharia de Software", "Lógica Computacional", "Programação e Sistemas Computacionais I"]
     },
     {
       period: "2º Período", 
-      subjects: ["Interação Humano Computador", "Programação e Sistemas Computacionais II", "Robótica", "Organização e Arquitetura de Computadores"]
+      subjects: ["Comunicação e Metodologia", "Interação Humano Computador", "Matemática Discreta e Linear", "Organização e Arquitetura de Computadores", "Programação e Sistemas Computacionais II", "Robótica"]
     },
     {
       period: "3º Período",
-      subjects: ["Banco de Dados I", "Desenvolvimento Front-End", "Programação Orientada a Objetos", "Redes de Computadores"]
+      subjects: ["Banco de Dados I", "Desenvolvimento Front-End", "Normatização de Processo de Software", "Programação Orientada a Objetos", "Redes de Computadores"]
     },
     {
       period: "4º Período",
-      subjects: ["Análise e Projeto de Sistemas", "Banco de Dados II", "Ciência de Dados", "Desenvolvimento Back-End"]
+      subjects: ["Análise e Projeto de Sistemas", "Banco de Dados II", "Ciência de Dados", "Desenvolvimento Back-End", "Gestão Empreendedora"]
     },
     {
       period: "5º Período",
-      subjects: ["Desenvolvimento Web Full-Stack", "Inteligência Artificial", "Jogos Digitais", "Propriedade Intelectual e Legislação Tecnológica"]
+      subjects: ["Desenvolvimento Web Full-Stack", "Inteligência Artificial", "Jogos Digitais", "Optativa I", "Propriedade Intelectual e Legislação Tecnológica"]
     },
     {
       period: "6º Período",
-      subjects: ["Desenvolvimento Mobile", "Machine Learning e Deep Learning", "Qualidade de Software", "Programa de Extensão Institucional"]
+      subjects: ["Desenvolvimento Mobile", "Machine Learning e Deep Learning", "Optativa II", "Programa de Extensão Institucional - PEX", "Qualidade de Software"]
     },
     {
       period: "7º Período",
@@ -302,7 +302,7 @@ function ResumeContent() {
     },
     {
       period: "8º Período",
-      subjects: ["Estágio Supervisionado", "Trabalho de Conclusão de Curso II", "Extensão II"]
+      subjects: ["Estágio Supervisionado", "Extensão II", "Trabalho de Conclusão de Curso II"]
     }
   ]
 
